@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-container-shared-storage
+spec:
+  volumes:
+    - name: sample
+      emptyDir: {}
+  containers:
+    - name: nginx
+      image: nginx
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: sample
+    - name: redhat
+      image: redhat/ubi9
+      volumeMounts:
+        - mountPath: /opt
+        name: sample

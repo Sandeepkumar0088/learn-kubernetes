@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Pod
+matadata:
+  name: ReplicaSet
+  labels:
+    app: guestbook
+    tier: frontend
+spec:
+  replicas: 3
+  selector:
+    matchlabels:
+    tier: frontend
+  template:
+    metadata:
+    labels:
+  tier: frontend
+  spec:
+    container:
+      - name: nginx
+        image: nginx

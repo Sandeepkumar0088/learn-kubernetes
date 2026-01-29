@@ -23,7 +23,7 @@ resource "aws_eks_node_group" "main" {
   node_group_name = "main"
   node_role_arn   = aws_iam_role.node.arn
   subnet_ids      = ["subnet-0b41036a19ffb50d9", "subnet-03cd379790a054a51"]
-  instance_types  = ["t3.micro"]
+  instance_types  = ["t3.small"]
 
   scaling_config {
     desired_size = 1

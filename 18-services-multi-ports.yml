@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: service-multi-ports
+  labels:
+    topic: services
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      ports:
+        - containerPort: 3000
+          name: p1
+        - containerPort: 4000
+          name: p2
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-cluster-multi-ports
+spec:
+  selector:
+    topic: services
+  ports:
+    - protocol: TCP
+      port: 3000 # service port
+      targetPort: 3000 # container port
+      name: p1
+    - protocol: TCP
+      port: 4000 # service port
+      targetPort: 4000 # container port
+      name: p2
+
+# kubectl apply -f 18*
+# kubectl exec -it service-cluster-multi-ports -- bash
+
+# kubectl get endpoints service-cluster-multi-ports -o yaml
+# kubectl describe endpoints service-cluster-multi-ports -o yaml

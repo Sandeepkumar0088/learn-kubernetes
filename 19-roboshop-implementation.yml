@@ -222,10 +222,10 @@ spec:
     spec:
       containers:
         - name: cart
-          image: cart
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/cart
           envFrom:
             - configMapRef:
-                name: public.ecr.aws/w8x4g9h7/roboshop-v3/cart
+                name: cart
 ---
 apiVersion: apps/v1
 kind: Deployment

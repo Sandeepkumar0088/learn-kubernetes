@@ -310,6 +310,7 @@ kind: Job
 metadata:
   name: catalogue-schema
 spec:
+  backoffLimit: 0
   template:
     spec:
       containers:
@@ -322,13 +323,14 @@ spec:
             - configMapRef:
                 name: catalogue
       restartPolicy: Never
-  backoffLimit: 0
+
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
   name: shipping-app-user
 spec:
+  backoffLimit: 0
   template:
     spec:
       containers:
@@ -341,13 +343,14 @@ spec:
             - configMapRef:
                 name: shipping
       restartPolicy: Never
-    backoffLimit: 0
+
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
   name: shipping-master-data
 spec:
+  backoffLimit: 0
   template:
     spec:
       containers:
@@ -360,13 +363,14 @@ spec:
             - configMapRef:
                 name: shipping
       restartPolicy: Never
-  backoffLimit: 0
+
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
   name: shipping-schema
 spec:
+  backoffLimit: 0
   template:
     spec:
       containers:
@@ -379,4 +383,4 @@ spec:
             - configMapRef:
                 name: shipping
       restartPolicy: Never
-  backoffLimit: 0
+

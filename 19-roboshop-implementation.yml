@@ -391,6 +391,7 @@ metadata:
 spec:
   template:
     spec:
+      backoffLimit: 0
       containers:
         - name: schema
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
@@ -401,7 +402,6 @@ spec:
             - configMapRef:
                 name: catalogue
       restartPolicy: Never
-  backoffLimit: 0
 ---
 apiVersion: batch/v1
 kind: Job
@@ -410,6 +410,7 @@ metadata:
 spec:
   template:
     spec:
+      backoffLimit: 0
       containers:
         - name: app-user
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
@@ -420,13 +421,13 @@ spec:
             - configMapRef:
                 name: shipping
       restartPolicy: Never
-  backoffLimit: 0
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
   name: shipping-master-data
 spec:
+  backoffLimit: 0
   template:
     spec:
       containers:
@@ -439,13 +440,13 @@ spec:
             - configMapRef:
                 name: shipping
       restartPolicy: Never
-  backoffLimit: 0
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
   name: shipping-schema
 spec:
+  backoffLimit: 0
   template:
     spec:
       containers:
@@ -458,4 +459,3 @@ spec:
             - configMapRef:
                 name: shipping
       restartPolicy: Never
-  backoffLimit: 0
